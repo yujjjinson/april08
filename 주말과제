@@ -1,0 +1,135 @@
+package senior;
+
+class TV {//TV
+	int price;
+	TV(){ price = 10;}
+}
+class Ref{//냉장고
+	int price;
+	Ref(){ price = 9;}
+}
+class ElectroMart {//가전매장
+	EmManager manager; int output;//매출액
+	ElectroMart(){
+		tv = new TV(); ref= new Ref(); manager=new EmManager();
+	}
+	TV tv; Ref ref;
+	void showPrice() {
+		System.out.println("tv의 가격:"+tv.price);
+		System.out.println("냉장고의 가격:"+ref.price);
+	}
+}
+class Dept{//백화점
+	//백화점에 가전매장과 의류매장이 있다. 
+	Dept(){
+		em=new ElectroMart(); cm=new ClothingMart();
+	}
+	ElectroMart em; ClothingMart cm;
+}
+class ClothingMart {//의류매장
+	CmManager manager;	int output;//매출액
+	ClothingMart(){
+		j=new Jean(); t = new TShirt(); manager=new CmManager();
+	}
+	Jean j; TShirt t;
+	void showPrice() {
+		System.out.println("청바지의 가격:"+j.price);
+		System.out.println("티셔츠의 가격:"+t.price);
+	}
+}
+class Jean{
+	int price;
+	Jean(){price = 5;}
+}
+class TShirt{
+	int price;
+	TShirt(){price = 1;}
+}
+class Guest {//손님
+	int pocketMoney; int buyTotal;//구매 총액용 변수
+	Guest(int pocketMoney){
+		this.pocketMoney = pocketMoney;
+	}
+	void showBuyTotal() {//구매총액 출력 메서드
+		System.out.println("구매총액: "+buyTotal);
+	}
+	void buyTv(TV tv, ElectroMart em) {//TV를 사는 메서드
+		if(pocketMoney >= tv.price) {
+			pocketMoney = pocketMoney - tv.price;
+			buyTotal = buyTotal + tv.price;
+			//가전매장의 매출액 증가
+			em.output = em.output + tv.price;
+		}else {
+			System.out.println("돈이 없어 TV 구매 못함");
+		}
+	}
+	void buyRef(Ref r, ElectroMart em) {//냉장고를 사는 메서드
+		if(pocketMoney >= r.price) {
+			pocketMoney = pocketMoney - r.price;
+			buyTotal = buyTotal + r.price;
+			em.output = em.output + r.price;
+		}else {
+			System.out.println("돈이 없어 냉장고 구매 못함");
+		}
+	}
+	void buyJean(Jean j,ClothingMart cm) {//청바지를 사는 메서드
+		if(pocketMoney >= j.price) {
+			pocketMoney = pocketMoney - j.price;
+			buyTotal = buyTotal + j.price;
+			cm.output = cm.output + j.price;
+		}else {
+			System.out.println("돈이 없어 청바지 구매 못함");
+		}
+	}
+}
+class CmManager {
+	CmManager(){}
+	
+	void showOutput(ClothingMart cm) {
+		System.out.println("의류매장 매출액:"+cm.output);
+	}
+}
+class EmManager {
+	EmManager(){}
+	
+	void showOutput(ElectroMart em) {
+		System.out.println("가전매장 매출액:"+em.output);
+	}
+}
+public class Study1 {
+	public static void main(String[] args) {
+		Dept dept = new Dept();
+		dept.em.showPrice();//백화점 안의 가전매장에서 물품의 가격출력
+		dept.cm.showPrice();//백화점 안의 의류매장에서 물품의 가격출력
+		Guest guest = new Guest(20);
+		guest.buyTv(dept.em.tv, dept.em);//손님이 백화점내의 가전매장내의 tv구매
+		guest.buyRef(dept.em.ref,dept.em);//손님이 백화점내의가전매장내의냉장고구매
+		guest.buyJean(dept.cm.j,dept.cm);//손님이 백화점내의 의류매장내의 청바지구매
+		guest.showBuyTotal();//손님의 구매총액
+		dept.em.manager.showOutput(dept.em);
+		//백화점내의 가전매장내의 점장이 백화점내의 가전매장의 매출액 출력
+		dept.cm.manager.showOutput(dept.cm);
+		//백화점내의 의류매장내의 점장이 백화점내의 의류매장의 매출액 출력
+		//백화점 안의 가전매장 -> dept.em
+		//백화점 안의 의류매장 -> dept.cm
+		//백화점 안의 가전매장안의 TV -> dept.em.tv
+		//백화점 안의 가전매장안의 냉장고 -> dept.em.ref
+		//백화점 안의 의류매장안의 청바지-> dept.cm.j
+		//백화점 안의 의류매장안의 t셔츠 -> dept.cm.t
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
