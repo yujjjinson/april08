@@ -1,0 +1,31 @@
+package syj;
+//자바의 특징 : 메서지의 오버 로딩 (over loading)
+//			-동일한 메서드의 이름을 허용 .
+// 			단, 메서드의 매개변수의 갯수가 달라야 한다.
+//			단, 매개변수의 갯수가 같아도, 매개변수의 데이터 타입이 달라야 한다. 
+//			오버로딩의 장점 : 매서드 작성자나 사용자가 편리하다. 
+class Adder{
+	Adder(){}
+	void add(int a, int b ) {System.out.println(a+b);}
+	void add(int a, long b) {System.out.println(a+b);}
+	void add(long a, int b) {System.out.println(a+b);}
+	void add(long a, long b ) {System.out.println(a+b);}
+	void doIt() {
+		System.out.println(100);
+		System.out.println(100L);
+		System.out.println(100.1);
+		System.out.println('A');
+		System.out.println("KOREA");
+		System.out.println(true);
+	}
+}
+public class study02 {
+public static void main(String[]args) {
+	Adder adder = new Adder();
+	adder.add(10, 10);
+	adder.add(10, 10L);
+	adder.add(10L, 10);
+	adder.add(10L, 10L);
+	adder.doIt();
+}
+}
