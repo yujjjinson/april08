@@ -1,0 +1,25 @@
+package senior;
+class Terran{
+	Terran(){}
+}
+class StudyOfArray{
+	StudyOfArray(){}
+	void doIt3() {
+		Terran[] terran = new Terran[20];
+		System.out.println(terran.length);
+	}
+	void doIt2() {
+		String[] strs = new String[10];
+		System.out.println(strs.length);
+	}
+	void doIt1() {
+		int[] values = new int[10];
+		System.out.println(values.length);
+	}
+}
+public class Study3 {
+	public static void main(String[] args) {
+		StudyOfArray soa = new StudyOfArray();
+		soa.doIt1(); soa.doIt2(); soa.doIt3();
+	}
+}
