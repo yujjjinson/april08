@@ -1,0 +1,97 @@
+package syj;
+//테란이 있다. 테란은 질럿과 저그, 또다른 테란은 공격을 할 수 있다. 
+//질럿이 있다. 질럿은 테란과 저그, 또다른 질럿을 공격할 수 있다. 
+//저그가 있다. 저그는 테란과 질럿, 또다른 저그를 공격할 수 있다. 
+
+class Terran{
+	int energy = 100;
+	Terran(){}
+	void attackZilet(Zilet z) {z.energy = z.energy - 10; }//질럿을 공격
+	void attackZerg(Zerg z) {z.energy = z.energy - 10;}//저그공격
+	void attackTerran(Terran t) {t.energy = t.energy - 10;} //테란 공격
+}
+class Zilet{
+	int energy = 100;
+	Zilet(){}
+	void attackZilet(Zilet z) {z.energy = z.energy - 10; }//질럿을 공격
+	void attackZerg(Zerg z) {z.energy = z.energy - 10;}//저그공격
+	void attackTerran(Terran t) {t.energy = t.energy - 10;} //테란 공격
+}
+class Zerg{
+	int energy = 100;
+	Zerg(){}
+	void attackZilet(Zilet z) {z.energy = z.energy - 10; }//질럿을 공격
+	void attackZerg(Zerg z) {z.energy = z.energy - 10;}//저그공격
+	void attackTerran(Terran t) {t.energy = t.energy - 10;} //테란 공격
+}
+
+public class Study3 {
+
+	public static void main(String[] args) {
+		Terran terran = new Terran();
+		Zerg zerg = new Zerg();
+		Zilet zilet = new Zilet();
+		terran.attackZerg(zerg);
+		terran.attackZilet(zilet);
+System.out.println("공격받은 저그 에너지"+zerg.energy);
+System.out.println("공격받은 질럿에너지 "+zilet.energy);
+
+	
+	}
+
+}
+
+
+
+
+
+
+
+(2)
+
+
+
+package syj;
+//테란이 있다. 테란은 질럿과 저그, 또다른 테란은 공격을 할 수 있다. 
+//질럿이 있다. 질럿은 테란과 저그, 또다른 질럿을 공격할 수 있다. 
+//저그가 있다. 저그는 테란과 질럿, 또다른 저그를 공격할 수 있다. 
+
+class Terran{
+	int energy = 100;
+	Terran(){}
+	void attack(Zilet z) {z.energy = z.energy - 10; }//질럿을 공격
+	void attack(Zerg z) {z.energy = z.energy - 10;}//저그공격
+	void attack(Terran t) {t.energy = t.energy - 10;} //테란 공격
+}
+class Zilet{
+	int energy = 100;
+	Zilet(){}
+	void attack(Zilet z) {z.energy = z.energy - 10; }//질럿을 공격
+	void attack(Zerg z) {z.energy = z.energy - 10;}//저그공격
+	void attack(Terran t) {t.energy = t.energy - 10;} //테란 공격
+}
+class Zerg{
+	int energy = 100;
+	Zerg(){}
+	void attack(Zilet z) {z.energy = z.energy - 10; }//질럿을 공격
+	void attack(Zerg z) {z.energy = z.energy - 10;}//저그공격
+	void attack(Terran t) {t.energy = t.energy - 10;} //테란 공격
+}
+
+public class Study3 {
+
+	public static void main(String[] args) {
+		Terran terran = new Terran();
+		Zerg zerg = new Zerg();
+		Zilet zilet = new Zilet();
+		terran.attack(zerg);
+		terran.attack(zilet);
+System.out.println("공격받은 저그 에너지"+zerg.energy);
+System.out.println("공격받은 질럿에너지 "+zilet.energy);
+
+	
+	}
+
+}
+
+
