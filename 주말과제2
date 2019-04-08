@@ -1,0 +1,110 @@
+package senior;
+
+class School {//초등학교
+	School(){
+		g = new Gaenari(5);	j = new Jindalae(10);
+	}
+	Gaenari g;	Jindalae j;
+	void showNumbers() {//총 정원 출력
+		int total = g.numbers + j.numbers;
+		System.out.println("초등학교의 정원:"+total);
+	}
+}
+class Gaenari {//개나리반
+	int numbers; GaenariTeacher gt;
+	Gaenari(int numbers){
+		gt = new GaenariTeacher();
+		this.numbers = numbers;
+		st = new Student[numbers];//학생이 들어갈 배열 생성
+		for(int i=0; i<numbers;i++) {
+			st[i] = new Student();//numbers만큼 학생 생성
+		}
+	}
+	void showTotalAndAvg() {
+		int total = 0;
+		for(int i=0;i<numbers;i++) {
+			total = total + st[i].score;
+		}
+		System.out.println("개나리반의 총점:"+total+",평균:"+
+						(total/numbers));
+	}
+	Student[] st;
+}
+class Jindalae {//진달래반
+	int numbers; JindalaeTeacher jt;
+	Student[] stds;
+	Jindalae(int numbers){
+		jt = new JindalaeTeacher();
+		this.numbers = numbers;
+		stds = new Student[numbers];
+		for(int i=0; i<numbers; i++) {
+			stds[i] = new Student();
+		}
+	}
+	void showTotalAndAvg() {
+		int total = 0;
+		for(int i=0;i<numbers;i++) {
+			total = total + stds[i].score;
+		}
+		System.out.println("진달래반의 총점:"+total+",평균:"+
+						(total/numbers));
+	}
+}
+class Student {//학생
+	int score;
+	Student(){
+		score = 90;
+	}
+}
+class GaenariTeacher {//개나리반의 담임
+	GaenariTeacher(){}
+	void showTotalAndAvg(Gaenari g) {
+		int total = 0;
+//		for(int i=0; i<g.numbers; i++) {
+		for(int i=0; i<g.st.length; i++) {
+			total=total+g.st[i].score;
+		}
+		System.out.println("개나리 담임 총점:"+total+",평균:"+
+						(total/g.numbers));
+	}
+}
+class JindalaeTeacher {//진달래반의 담임
+	JindalaeTeacher(){}
+	void showTotalAndAvg(Jindalae j) {
+		int total = 0;
+//		for(int i=0; i<j.numbers; i++) {
+		for(int i=0; i<j.stds.length; i++) {
+			total=total+j.stds[i].score;
+		}
+		System.out.println("진달래 담임 총점:"+total+",평균:"+
+					(total/j.numbers));
+	}
+}
+public class Study2 {
+
+	public static void main(String[] args) {
+		School school = new School();
+		school.showNumbers();//학교의 학생의 정원 출력
+		school.g.showTotalAndAvg();//학교의 개나리반의 총점,평균
+		school.j.showTotalAndAvg();//학교의 진달래반의 총점,평균
+		school.g.gt.showTotalAndAvg(school.g);
+		//학교의 개나리반의 담임이 총점,평균
+		school.j.jt.showTotalAndAvg(school.j);
+		//학교의 진달래반의 담임이 총점,평균
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
