@@ -1,0 +1,56 @@
+ package syj;
+//자바의 특징 : 메서지의 오버 로딩 (over loading)
+//			-동일한 메서드의 이름을 허용 .
+// 			단, 메서드의 매개변수의 갯수가 달라야 한다.
+//			단, 매개변수의 갯수가 같아도, 매개변수의 데이터 타입이 달라야 한다. 
+//			오버로딩의 장점 : 매서드 작성자나 사용자가 편리하다. 
+
+
+(1)
+
+
+
+class Adder{
+	Adder(){}
+	void addIntInt(int a, int b ) {System.out.println(a+b);}
+	void addIntLong(int a, long b) {System.out.println(a+b);}
+	void addLongInt(long a, int b) {System.out.println(a+b);}
+	void addLongLong(long a, long b ) {System.out.println(a+b);}
+}
+public class study02 {
+public static void main(String[]args) {
+	Adder adder = new Adder();
+	adder.addIntInt(10, 10);
+	adder.addIntLong(10, 10L);
+	adder.addLongInt(10L, 10);
+	adder.addLongLong(10L, 10L);
+}
+}
+
+
+
+
+(2)
+
+
+
+class Adder{
+	Adder(){}
+	void add(int a, int b ) {System.out.println(a+b);}
+	void add(int a, long b) {System.out.println(a+b);}
+	void add(long a, int b) {System.out.println(a+b);}
+	void add(long a, long b ) {System.out.println(a+b);}
+}                             ////			오버로딩의 장점 : 매서드 작성자나 사용자가 편리하다. 
+public class study02 {
+public static void main(String[]args) {
+	Adder adder = new Adder();
+	adder.addIntInt(10, 10);
+	adder.addIntLong(10, 10L);
+	adder.addLongInt(10L, 10);
+	adder.addLongLong(10L, 10L);
+}
+
+
+
+
+        ===== 동일하게 적용되는 수식들임. 
